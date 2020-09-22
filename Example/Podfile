@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'BWPageTab_Example' do
+  pod 'BWPageTab', :path => '../'
+
+  target 'BWPageTab_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
