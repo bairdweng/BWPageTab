@@ -1,0 +1,16 @@
+PODS:
+  - BWPageTab (0.1.0)
+
+DEPENDENCIES:
+  - BWPageTab (from `../`)
+
+EXTERNAL SOURCES:
+  BWPageTab:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BWPageTab: d6511d65b15a99736e4ba23ef47b99c7cd0ecbae
+
+PODFILE CHECKSUM: 9c120f07e276fc5c8f84cffba396a6db0457e5f0
+
+COCOAPODS: 1.9.3
