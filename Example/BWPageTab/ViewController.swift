@@ -17,13 +17,21 @@ class ViewController: UIViewController {
     }
     
     func initPageTab() {
+        let pageTabManage = BWPageTab.singleManage
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        headerView.backgroundColor = .red
+        pageTabManage.headerView = headerView
+        
+        
         let firstVc = FirstViewController()
         let secondVc = SecondViewController()
         let thirdVc = ThirdViewController()
-        let vc = BWPageTab.singleManage.register(controllers: [firstVc,secondVc,thirdVc])
+        let vc = pageTabManage.register(controllers: [firstVc,secondVc,thirdVc])
         self.addChildViewController(vc)
         view.addSubview(vc.view)
         vc.view.frame = self.view.bounds
+        
+       
     }
     
     override func didReceiveMemoryWarning() {

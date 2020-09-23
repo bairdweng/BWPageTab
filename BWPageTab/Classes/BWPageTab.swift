@@ -9,7 +9,7 @@ import UIKit
 
 open class BWPageTab: NSObject {
     public static let singleManage = BWPageTab()
-    
+    public var headerView:UIView?
     public func register(controllers:[UIViewController])->UIViewController {
         let vc = BWRootViewController()
         vc.viewControllers = controllers

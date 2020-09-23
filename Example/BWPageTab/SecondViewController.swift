@@ -9,6 +9,31 @@
 import UIKit
 
 class SecondViewController: UIViewController {
+    
+    let cellId = "secondvc_cell"
+    lazy var tableView:UITableView = {[weak self] in
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self?.automaticallyAdjustsScrollViewInsets = false
+            // Fallback on earlier versions
+        }
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        return tableView
+    }()
+    
+    let dataSources:[Any] = {
+        var datas:[String] = []
+        for i in 1...20 {
+            datas.append("second_\(i)")
+        }
+        return datas
+    }()
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("SecondViewController viewwillAppear")
@@ -16,7 +41,8 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-
+        self.view.addSubview(tableView)
+        tableView.frame = self.view.bounds
         // Do any additional setup after loading the view.
     }
     
@@ -31,4 +57,25 @@ class SecondViewController: UIViewController {
     }
     */
 
+}
+extension SecondViewController:UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSources.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId,for: indexPath)
+        cell.textLabel?.text = dataSources[indexPath.row] as? String ?? ""
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    
 }
