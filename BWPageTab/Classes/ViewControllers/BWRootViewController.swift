@@ -74,13 +74,14 @@ class BWRootViewController: UIViewController {
         guard let headerView = BWPageTab.singleManage.headerView else {
             return
         }
-        let headerY = y < CGFloat(200) ? -y : CGFloat(-200)
+        let headerY = y < tableViewHeaderHeight ? -y : -tableViewHeaderHeight
         var newFrame = headerView.frame
         newFrame.origin.y = headerY < 0 ? headerY : 0
         headerView.frame = newFrame
     }
     
     func syncTableViewY(y:CGFloat) {
+        if y > tableViewHeaderHeight { return }
         for (index,tableView) in tableViews.enumerated() {
             if index != currentPage {
                 tableView.setContentOffset(CGPoint(x: 0, y: y), animated: false)

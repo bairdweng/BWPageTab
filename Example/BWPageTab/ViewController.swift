@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     func initPageTab() {
         let pageTabManage = BWPageTab.singleManage
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 500))
         headerView.backgroundColor = .red
         pageTabManage.headerView = headerView
         
